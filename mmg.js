@@ -3,6 +3,8 @@ var myObstacles1 = [];
 var myObstacles2 = [];
 var myObstacles3 = [];
 var myScore;
+var myPlane;
+var myAccelerate;
 var mouse=false;
 var inter1=1,inter2=50,inter3=100;
 var col1,cl2,col3;
@@ -14,7 +16,9 @@ function startGame() {
     myGamePiece = new component(30, 30, "red", 10, 120);
     myGamePiece.gravity = 0.05;
     myScore = new component("30px", "Consolas", "black", 280, 40, "text");
-    myAttakerPlane = new component(10,320,"green",480,0);
+    myAttakerPlane = new component(10,280,"green",470,0);
+    myPlane = new component(10,280,"red",0,0);
+    myAccelerate = new component(100,50,"grey",200,220);
     myGameArea.start();
 }
 
@@ -28,12 +32,6 @@ var myGameArea = {
         this.canvas.style.border="1px solid #000000";
         this.score=0;
         this.interval = setInterval(updateGameArea, 20);
-        window.addEventListener('keydown', function (e) {
-            myGameArea.key = e.keyCode;
-        })
-        window.addEventListener('keyup', function (e) {
-            myGameArea.key = false;
-        })
         },
     clear : function() {
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -78,6 +76,7 @@ function component(width, height, color, x, y, type) {
     this.hitTop = function(){
         if(this.y<0){
             this.y=0;
+            this.gravity=0.05;
         }
     }
     this.crashWith = function(otherobj) {
@@ -94,6 +93,18 @@ function component(width, height, color, x, y, type) {
             crash = false;
         }
         return crash;
+    }
+    this.clicked = function() {
+        var myleft = this.x;
+        var myright = this.x + (this.width);
+        var mytop = this.y;
+        var mybottom = this.y + (this.height);
+        var clicked = true;
+        if ((mybottom < myGameArea.y) || (mytop > myGameArea.y)
+         || (myright < myGameArea.x) || (myleft > myGameArea.x)) {
+            clicked = false;
+        }
+        return clicked;
     }
 }
 
@@ -199,8 +210,10 @@ function updateGameArea() {
     else if(!mouse){
         myGamePiece.gravity=0.05;
     }
+    myAttakerPlane.update();
     myGamePiece.newPos();
     myGamePiece.update();
+    myPlane.update();
 }
 
 function everyinterval(n) {
@@ -219,4 +232,19 @@ function accelerate(n) {
         mouse=false;
     }
 }
-
+window.addEventListener('keydown', function (e) {
+            if (e.keyCode==32) {
+                accelerate(-0.1);
+            }
+})
+window.addEventListener('keyup', function (e) {
+            if (e.keyCode==32) {
+                accelerate(0.05);
+            }
+})
+document.getElementsByTagName("button")[0].addEventListener('touchstart',function(e){
+    accelerate(-0.1);
+})
+document.getElementsByTagName("button")[0].addEventListener('touchstart',function(e){
+    accelerate(-0.05);
+})
