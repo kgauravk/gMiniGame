@@ -1,0 +1,78 @@
+<!doctype html>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>myMiniGame</title>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body onload="startGame()">
+	<nav class="navbar navbar-default navbar-fixed-top">
+	<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#hide-it" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+	<div class="container">
+		<div class="navbar-header">
+			<a href="#" class="navbar-brand "><i class="fa fa-book" aria-hidden="true"></i> gMiniGame</a>
+		</div>
+		<div class="collapse navbar-collapse" id="hide-it">
+			<ul class="nav navbar-nav ">
+					<li class="dropdown">
+			          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About Creator <span class="caret"></span></a>
+			          <ul class="dropdown-menu">
+			            <li><a href="#">Gaurav Kumar</a></li>
+			            <li><a href="#">A BTech student</a></li>
+			            <li><a href="#">Just started to create things</a></li>
+			          </ul>
+			        </li>
+					<li class="dropdown">
+			          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Contact <span class="caret"></span></a>
+			          <ul class="dropdown-menu">
+			            <li><a href="#"><i class="fa fa-phone" aria-hidden="true"></i> 7903926346</a></li>
+			            <li><a href="#"><i class="fa fa-whatsapp" aria-hidden="true"></i> 9565612952</a></li>
+			            <li role="separator" class="divider"></li>
+			            <li><a href="http://facebook.com/kg674"><i class="fa fa-facebook-official" aria-hidden="true"></i> Facebook</a></li>
+			            <li role="separator" class="divider"></li>
+			            <li><a href="https://www.instagram.com/_gaurav_k_1/"><i class="fa fa-instagram" aria-hidden="true"></i> Instagram</a></li>
+			          </ul>
+			        </li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				 <li><a href="http://facebook.com/kg674"><i class="fa fa-facebook-official" aria-hidden="true"></i> Facebook</a></li>
+			            <li role="separator" class="divider"></li>
+			            <li><a href="https://www.instagram.com/_gaurav_k_1/"><i class="fa fa-instagram" aria-hidden="true"></i> Instagram</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
+	<div class="container">
+		<div class="jumbotron">
+			<h1><i class="fa fa-gamepad" aria-hidden="true"></i> gMiniGame</h1>
+			<p><b>Use spacebar or accelerate up button to accelerate up.<br>
+				Dont touch green boxes.<br>
+				Touch yellow boxes to gain extra points.<br>
+				Reload Page to Play new game</b>
+			</p>
+		</div>
+	</div>
+	<div class="container">
+		<div id="container">
+			
+		</div>
+		<div class="button">
+			<button class="btn btn-lg btn-default" onmousedown="accelerate(-0.1)" onmouseup="accelerate(0.05)">Accelerate Up</button>
+			
+		</div>
+	</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="mmg.js"></script>
+</body>
+</html>
