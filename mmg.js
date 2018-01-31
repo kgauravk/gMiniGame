@@ -71,12 +71,13 @@ function component(width, height, color, x, y, type) {
         var rockbottom = myGameArea.canvas.height - this.height;
         if (this.y > rockbottom) {
             this.y = rockbottom;
+            this.gravitySpeed=0;
         }
     }
     this.hitTop = function(){
         if(this.y<0){
             this.y=0;
-            this.gravity=0.05;
+            this.gravitySpeed=0;
         }
     }
     this.crashWith = function(otherobj) {
@@ -242,9 +243,18 @@ window.addEventListener('keyup', function (e) {
                 accelerate(0.05);
             }
 })
-document.getElementsByTagName("button")[0].addEventListener('touchstart',function(e){
-    accelerate(-0.1);
-})
-document.getElementsByTagName("button")[0].addEventListener('touchstart',function(e){
-    accelerate(-0.05);
+
+window.addEventListener('load',function(){
+    document.getElementsByTagName("canvas")[0].addEventListener('mousedown',function(e){
+        accelerate(-0.1);
+    })
+    document.getElementsByTagName("canvas")[0].addEventListener('mouseup',function(e){
+        accelerate(-0.05);
+    })
+    document.getElementsByTagName("canvas")[0].addEventListener('touchstart',function(e){
+        accelerate(-0.1);
+    })
+    document.getElementsByTagName("canvas")[0].addEventListener('touchstart',function(e){
+        accelerate(-0.05);
+    })
 })
